@@ -6,6 +6,7 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
       function($scope, BoardlistService) {
 
+          // 함수 선언
           var self = this;
 
           self.boardlist={id:null, name:'',passwd:'',title:'',content:''};
@@ -55,8 +56,10 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
                   function() {
 
                     alert("Save OK!");
+                   
 
                     self.list(0);
+                   history.back(-1);
 
                   },
 
@@ -87,8 +90,9 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
                                        alert("Update OK!");
 
                                        self.list(self.page.number);  //현재 페이지 리로드
-
+  history.back(-1);
                                },
+                               
 
                                function(errResponse){
 
@@ -112,7 +116,8 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
               if(self.boardlist.id===null){                     
 
-                  self.create(self.boardlist);         
+                  self.create(self.boardlist);  
+                         
 
                   console.log("[controller:create]", self.boardlist);
 
@@ -169,7 +174,7 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
                                         alert("Delete OK!");
 
                                         self.list(self.page.number);  //현재 페이지 리로드
-
+  history.back(-1);
                                },
 
                                function(errResponse){

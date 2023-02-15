@@ -100,7 +100,7 @@ String cp = request.getContextPath();
 
 		<div class="inner-wrap">
 			<div class="lnb-area addchat location-fixed">
-				<nav id="lnb">
+				<nav id="lnb" class="ty2">
 				<p class="tit">
 					<a href="http://localhost/movie/article" title="고객센터">고객센터</a>
 				</p>
@@ -301,7 +301,7 @@ String cp = request.getContextPath();
 									
 									<input
 									type="button" value=" 돌아가기 " class="button purple large"
-									onclick="javascript:location.href='<%=cp%>/movie/list';" />
+									onclick="javascript:location.href='<%=cp%>/boardlist';" />
 							</div>
 
 						</form>
