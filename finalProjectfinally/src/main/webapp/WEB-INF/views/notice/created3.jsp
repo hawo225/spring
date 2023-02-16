@@ -27,7 +27,8 @@ String cp = request.getContextPath();
 <script type="text/javascript" src="/resources/js/util.js"></script>
 <script type="text/javascript">
 
-	function sendIt(){
+	<%-- function sendIt(){
+	 원래 엔티티에서 생성된 테이블 안의 데이터를 받아 게시판 페이지 보내기 위한 기능의 자바 함수 
 		
 		var f = document.myForm;
 		
@@ -85,16 +86,23 @@ String cp = request.getContextPath();
 	/movie/created2";
 		f.submit();
 
-	}
+	} --%>
+	
+	
+	
 </script>
 </head>
 <body ng-app="myBoard" class="ng-cloak"
 	ng-controller="BoardlistController as ctrl">
-<!-- header -->
-<jsp:include page="../layout/headerWhite.jsp"></jsp:include>
-<!--// header -->
+	<!-- ng-app이란 앞서 설명한 자바스크립트 app을 불러와 페이지에 적용시키는 것이다 -->
 
-<!-- container -->
+	<!-- header -->
+	<jsp:include page="../layout/headerWhite.jsp"></jsp:include>
+	<!-- 페이지에 레이아웃을 적용 시키기 위한 쿼리 -->
+
+	<!--// header -->
+
+	<!-- container -->
 	<div class="container has-lnb">
 
 
@@ -105,20 +113,22 @@ String cp = request.getContextPath();
 					<a href="http://localhost/movie/article" title="고객센터">고객센터</a>
 				</p>
 				<ul>
-							<li><a href="/movie/customer" title="고객센터 홈">고객센터</a></li>
-							<li ><a href="#" title="자주 묻는 질문">자주 묻는 질문</a></li>
-							<!-- <li class="on"><a href="/movie/created" title="공지사항">공지사항(원본)</a></li> -->
-							<li ><a href="http://localhost:8080/movie/list" title="공지사항">공지사항</a></li>
-							<li><a href="/movie/list2" title="1:1문의">1:1문의</a></li>
-							<li class="on"><a href="http://localhost:8080/boardlist" title="게시판">게시판</a></li>
-							<!-- <li><a href="http://localhost:8080/movie/created" title="게시판(created)">게시판(원본)</a></li> -->
-							<li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
-							<li><a href="#" title="분실물 문의">분실물 문의</a></li>
-							<li><a href="#" title="이용약관">이용약관</a></li>
-							<li><a href="#" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
-							<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
-							<li><a href="#" style="border-radius: 0 0 10px 10px;" title="스크린배정수에관한기준">스크린배정수에관한기준</a></li>
-						</ul>
+					<li><a href="/movie/customer" title="고객센터 홈">고객센터</a></li>
+					<li><a href="#" title="자주 묻는 질문">자주 묻는 질문</a></li>
+					<!-- <li class="on"><a href="/movie/created" title="공지사항">공지사항(원본)</a></li> -->
+					<li><a href="http://localhost:8080/movie/list" title="공지사항">공지사항</a></li>
+					<li><a href="/movie/list2" title="1:1문의">1:1문의</a></li>
+					<li class="on"><a href="http://localhost:8080/boardlist"
+						title="게시판">게시판</a></li>
+					<!-- <li><a href="http://localhost:8080/movie/created" title="게시판(created)">게시판(원본)</a></li> -->
+					<li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
+					<li><a href="#" title="분실물 문의">분실물 문의</a></li>
+					<li><a href="#" title="이용약관">이용약관</a></li>
+					<li><a href="#" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
+					<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+					<li><a href="#" style="border-radius: 0 0 10px 10px;"
+						title="스크린배정수에관한기준">스크린배정수에관한기준</a></li>
+				</ul>
 
 
 				<!-- 고객센터 메뉴일때만 출력 -->
@@ -168,6 +178,7 @@ String cp = request.getContextPath();
 										<tr>
 											<th scope="row"><label for="title">제목</label> <em
 												class="font-orange">*</em></th>
+
 											<td><input type="text" id="title"
 												ng-model="ctrl.boardlist.title"
 												class="input-text, title form-control input-sm" value=""
@@ -182,21 +193,25 @@ String cp = request.getContextPath();
 
 											<th scope="row"><label for="name">글쓴이</label> <em
 												class="font-orange">*</em></th>
+
 											<td><input type="text" id="name"
 												ng-model="ctrl.boardlist.name"
 												class="input-text w650px, name form-control input-sm"
 												value="" maxlength="15" placeholder="Enter your Name"
 												required ng-maxlength="20">
+
 												<div class="has-error" ng-show="myForm.$dirty"></div></td>
 
 
 											<th scope="row"><label for="passwd">패스워드</label> <em
 												class="font-orange">*</em></th>
+
 											<td><input type="password" id="passwd"
 												ng-model="ctrl.boardlist.passwd"
 												class="input-text w650px,  passwd form-control input-sm"
 												value="" maxlength="15" placeholder="Enter your Password"
 												required ng-maxlength="20">
+
 												<div class="has-error" ng-show="myForm.$dirty"></div></td>
 										</tr>
 
@@ -271,7 +286,7 @@ String cp = request.getContextPath();
 									<input type="submit"
 										value="{{!ctrl.boardlist.id ? '등록하기' : 'Update'}}"
 										class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
-
+									<!-- 등록하기 버튼 같은 경우 자바스크립트 모듈로 기동하기 때문에 한정된 위치에서 벗어나게 되면은 기동을 하지 않는 문제가 있는것 같다  -->
 									<button type="button" ng-click="ctrl.reset()"
 										class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
 
@@ -283,23 +298,14 @@ String cp = request.getContextPath();
 
 
 							<br /> <br />
-							<div id="bbsCreated_footer" align="center" class="form-actions floatRight">
-								<input type="submit" value=" {{!ctrl.boardlist.id ? '등록하기' : 'Update'}}"  class="button purple large"
-									onclick="sendIt();" ng-disabled="myForm.$invalid" />
-									
-									
-									
-									
-									
-									 <input type="reset" value=" 다시입력 "
-									class="button purple large"
-									onclick="document.myForm.subject.focus();" /> 
-									
-									
-									
-								
-									
-									<input
+							<div id="bbsCreated_footer" align="center"
+								class="form-actions floatRight">
+								<input type="submit"
+									value=" {{!ctrl.boardlist.id ? '등록하기' : 'Update'}}"
+									class="button purple large" onclick="sendIt();"
+									ng-disabled="myForm.$invalid" /> <input type="reset"
+									value=" 다시입력 " class="button purple large"
+									onclick="document.myForm.subject.focus();" /> <input
 									type="button" value=" 돌아가기 " class="button purple large"
 									onclick="javascript:location.href='<%=cp%>/boardlist';" />
 							</div>
@@ -316,28 +322,5 @@ String cp = request.getContextPath();
 							class="btn-go-top" title="top" style="position: fixed;">top</a>
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-			</html>
+</html>

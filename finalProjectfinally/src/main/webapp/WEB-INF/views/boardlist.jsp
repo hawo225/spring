@@ -44,13 +44,13 @@ String cp = request.getContextPath();
 
 <script type="text/javascript">
 
-	function sendIt(){
+	<%-- function sendIt(){
 		
 		var f = document.searchForm;
 		f.action = "<%=cp%>
 	/movie/boardlist";
 		f.submit();
-	}
+	} --%>
 </script>
 
 
@@ -102,7 +102,7 @@ li.a {
 							<!-- <li class="on"><a href="/movie/created" title="공지사항">공지사항(원본)</a></li> -->
 							<li ><a href="http://localhost:8080/movie/list" title="공지사항">공지사항</a></li>
 							<li><a href="/movie/list2" title="1:1문의">1:1문의</a></li>
-							<li class="on"><a href="http://localhost:8080/boardlist" title="게시판">게시판</a></li>
+							<li class="on"><a href="/boardlist" title="게시판">게시판</a></li>
 							<!-- <li><a href="http://localhost:8080/movie/created" title="게시판(created)">게시판(원본)</a></li> -->
 							<li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
 							<li><a href="#" title="분실물 문의">분실물 문의</a></li>
@@ -193,11 +193,6 @@ li.a {
 
 								<th align="center">조회수</th>
 
-
-
-
-
-
 								<th align="center">조회/삭제</th>
 
 
@@ -226,8 +221,7 @@ li.a {
 
 								<td align="center"><span ng-bind="boardlist.name"></span></td>
 
-								<td align="center">{{boardlist.regdate | date:"yy.MM.dd
-									hh:mm"}}</td>
+								<td align="center">{{boardlist.regdate | date:"yy.MM.dd hh:mm"}}</td>
 
 								<td align="center"><span ng-bind="boardlist.readcount"></span></td>
 
@@ -245,6 +239,8 @@ li.a {
 											class="btn btn-success custom-width"><a href="/boardlist2" 
 											 title="게시판으로 이동">수정하기</a>
 											</button>
+											
+											
 									</div>
 
 									<dd class="title">
@@ -277,6 +273,7 @@ li.a {
 
 								<ul class="a pagination" style="padding-top: 0px;">
 
+                                      <!-- 값과 값의 종류(Data Type)가 모두 같은지를 비교하여 0, 같은 데이터 타입이 아닐경우 버튼을 누를 수 없게 만들었다 -->
 									<li ng-class="{disabled: ctrl.page.number === 0}"><a
 										ng-show="ctrl.page.number !== 0" class="a pointer"
 										ng-click="ctrl.list(ctrl.page.number-1)">Prev</a> <span
@@ -315,7 +312,7 @@ li.a {
 		<!--// container -->
 
 		<!-- footer -->
-		<jsp:include page="layout/footerGrey.jsp"></jsp:include>
+			<jsp:include page="layout/headerWhite.jsp"></jsp:include>
 		<!-- //footer -->
 
 
