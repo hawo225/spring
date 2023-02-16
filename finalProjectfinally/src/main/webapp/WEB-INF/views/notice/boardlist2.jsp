@@ -71,7 +71,7 @@ li.a {
 
 
 	<!-- header -->
-	<jsp:include page="layout/headerWhite.jsp"></jsp:include>
+	<jsp:include page="../layout/headerWhite.jsp"></jsp:include>
 	<!--// header -->
 
 
@@ -104,7 +104,8 @@ li.a {
 					<!-- <li class="on"><a href="/movie/created" title="공지사항">공지사항(원본)</a></li> -->
 					<li><a href="http://localhost:8080/movie/list" title="공지사항">공지사항</a></li>
 					<li><a href="/movie/list2" title="1:1문의">1:1문의</a></li>
-					<li class="on"><a href="/boardlist" title="게시판">게시판</a></li>
+					<li class="on"><a href="/boardlist"
+						title="게시판">게시판</a></li>
 					<!-- <li><a href="http://localhost:8080/movie/created" title="게시판(created)">게시판(원본)</a></li> -->
 					<li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
 					<li><a href="#" title="분실물 문의">분실물 문의</a></li>
@@ -132,7 +133,7 @@ li.a {
 			<div id="contents" class="location-fixed">
 				<h2 class="tit">게시판</h2>
 
-
+				
 				<!-- 검색창 -->
 
 
@@ -245,10 +246,8 @@ li.a {
 
 											<th align="center">조회/삭제</th>
 
-											<!-- 제일 아쉬운 부분이며 AJAX비동기식으로 버튼 클릭시 데이터를 다음 페이지로 자동으로 넣어 구현 하고 싶었으나
+	<!-- 제일 아쉬운 부분이며 AJAX비동기식으로 버튼 클릭시 데이터를 다음 페이지로 자동으로 넣어 구현 하고 싶었으나
 											페이지에 데이터를 불러오는것 까지 성공하였지만 한 페이지 안에서 고유 ID값 마다 정보를 다르게 불러오는것에서 실패 하였다. -->
-
-
 
 
 										</tr>
@@ -277,11 +276,10 @@ li.a {
 
 											<td align="center"><span ng-bind="boardlist.readcount"></span></td>
 
-											<td>
+											<td >
 
-												<button type="button" ng-click="ctrl.edit(boardlist.id)"
+												<button type="button"  ng-click="ctrl.edit(boardlist.id)"
 													class="btn btn-success custom-width">게시글 조회</button>
-
 
 												<button type="button" ng-click="ctrl.delete(boardlist.id)"
 													class="btn btn-success custom-width">삭제하기</button>
@@ -304,11 +302,23 @@ li.a {
 								<input type="submit"
 									value=" {{!ctrl.boardlist.id ? '등록하기' : 'Update'}}"
 									class="button purple large" onclick="sendIt();"
-									ng-disabled="myForm.$invalid" /> <input type="reset"
+									ng-disabled="myForm.$invalid" />
+									
+									 <input type="reset"
 									value=" 다시입력 " class="button purple large"
-									onclick="document.myForm.subject.focus();" /> <input
+									onclick="document.myForm.subject.focus();" /> 
+									
+									<input
 									type="button" value=" 돌아가기 " class="button purple large"
 									onclick="javascript:location.href='<%=cp%>/boardlist';" />
+
+
+
+
+
+
+
+
 
 
 							</div>
@@ -326,12 +336,20 @@ li.a {
 					</div>
 				</div>
 
+
+
+
+
+
+
+
+
 			</div>
 		</div>
 		<!--// container -->
 
 		<!-- footer -->
-		<jsp:include page="layout/headerWhite.jsp"></jsp:include>
+		<jsp:include page="../layout/footerGrey.jsp"></jsp:include>
 		<!-- //footer -->
 </body>
 

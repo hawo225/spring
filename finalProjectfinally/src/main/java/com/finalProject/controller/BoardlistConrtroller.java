@@ -37,7 +37,7 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 
-@RequestMapping("/boardlist")
+@RequestMapping("notice/boardlist")
 /* 보드리스트 URL로 보드리스트Controller에 요청(Request)을 보내고 */
 
   public class BoardlistConrtroller {
@@ -51,12 +51,12 @@ import org.springframework.http.HttpStatus;
 	MyUtil myUtil; //@Service로 구현된 MyUtil을 불러온것
 
 	@RequestMapping(method = RequestMethod.GET)
-    // 루트요청(localhost:8080/boardlist/)시 리스트 보기로
+    // 루트요청(localhost/boardlist/)시 리스트 보기로
 	public ModelAndView index() {
 
 		
 		System.out.println("boardlist 호출");
-		return new ModelAndView("boardlist");
+		return new ModelAndView("./boardlist");
         // jsp아래 boardlist.jsp 호출
 	}
 
@@ -91,7 +91,7 @@ import org.springframework.http.HttpStatus;
 
 	
 	// 게시판 글 수정
-	@RequestMapping(value = "/notice/created", method = RequestMethod.PUT)
+	@RequestMapping(value = "/notice/created3", method = RequestMethod.PUT)
 	// /notice/created 경로로 요청한 put 메서드
 	public ResponseEntity<Boardlist> delete(@RequestBody Boardlist boardlist,
 
